@@ -48,6 +48,10 @@ NSInteger const RNToastNativeGravityTop = 3;
     _keyOffset = 0;
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+  return YES;
+}
 
 RCT_EXPORT_MODULE()
 
