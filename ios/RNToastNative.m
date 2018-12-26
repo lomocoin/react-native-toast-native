@@ -6,8 +6,9 @@
 #import "UIView+Toast.h"
 
 NSInteger const RNToastNativeBottomOffset = 40;
-double const RNToastNativeShortDuration = 3.0;
-double const RNToastNativeLongDuration = 5.0;
+double const RNToastNativeFlashDuration = 1.0;
+double const RNToastNativeShortDuration = 2.0;
+double const RNToastNativeLongDuration = 3.5;
 NSInteger const RNToastNativeGravityBottom = 1;
 NSInteger const RNToastNativeGravityCenter = 2;
 NSInteger const RNToastNativeGravityTop = 3;
@@ -57,6 +58,7 @@ RCT_EXPORT_MODULE()
 
 - (NSDictionary *)constantsToExport {
     return @{
+             @"FLASH": [NSNumber numberWithDouble:RNToastNativeFlashDuration],
              @"SHORT": [NSNumber numberWithDouble:RNToastNativeShortDuration],
              @"LONG": [NSNumber numberWithDouble:RNToastNativeLongDuration],
              @"BOTTOM": [NSNumber numberWithInteger:RNToastNativeGravityBottom],
