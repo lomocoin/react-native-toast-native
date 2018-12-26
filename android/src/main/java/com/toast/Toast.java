@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.text.Layout;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,14 +77,15 @@ public class Toast extends ReactContextBaseJavaModule implements LifecycleEventL
                 gd.setStroke(borderWidth, Color.parseColor(backgroundColor));
                 gd.setColor(Color.parseColor(backgroundColor));
                 gd.setCornerRadius(cornerRadius);
-                gd.setSize(width, height);
+//                gd.setSize(width, height);
                 view.setBackground(gd);
                 try{
                     text.setTextColor(Color.parseColor(color));
                     text.setTextSize(fontSize);
-                    text.setLines(lines);
+                    text.setEllipsize(TextUtils.TruncateAt.END);
+//                    text.setLines(lines);
                     text.setMaxLines(lines);
-                    text.setHeight(lineHeight);
+//                    text.setHeight(lineHeight);
                     text.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
                     text.setTypeface(Typeface.SANS_SERIF);
                     if(fontWeight.equals("bold")){
@@ -90,8 +93,10 @@ public class Toast extends ReactContextBaseJavaModule implements LifecycleEventL
                     }else{
                         text.setTypeface(Typeface.DEFAULT);
                     }
-                    text.setLetterSpacing(letterSpacing);
-                } catch (NoSuchMethodError e) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        text.setLetterSpacing(letterSpacing);
+                    }
+                } catch (Exception e) {
                      // ignore
                 }
                 toast.setView(view);
