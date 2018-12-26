@@ -309,7 +309,7 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
         messageLabel.layer.backgroundColor = backgroundColor;
         messageLabel.backgroundColor = [UIColor clearColor];
         messageLabel.alpha = 1.0;
-        messageLabel.text = message;
+        messageLabel.text = [NSString stringWithFormat:@"  %@  ",message];
 
         CGSize maxSizeMessage = CGSizeMake((self.bounds.size.width * style.maxWidthPercentage) - imageRect.size.width, self.bounds.size.height * style.maxHeightPercentage);
         CGSize expectedSizeMessage = [messageLabel sizeThatFits:maxSizeMessage];
